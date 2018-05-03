@@ -5,7 +5,7 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 #
 
-package 'java-1.7.0-openjdk-devel'
+package 'sudo apt-get install openjdk-8-jre'
 
 group "tomcat" do
 	gid 2501
@@ -40,7 +40,7 @@ execute "untar" do
 	group "root"
 	cwd "/opt/tomcat"
 	action :run
-	command "tar xvf /tmp/apache-tomcat-8.5.24.tar.gz -C /opt/tomcat --strip-components=1"
+	command "tar xvf /tmp/apache-tomcat-9.0.7-src.tar.gz -C /opt/tomcat --strip-components=1"
 end
 
 execute '/opt/tomcat/conf' do
@@ -65,14 +65,6 @@ execute '/opt/tomcat' do
 	cwd "/opt/tomcat"
 	action :run
 	command "chgrp -R tomcat /opt/tomcat"
-end
-
-execute 'chown_webapps_work_temp_logs' do
-	user "root"
-	group "root"
-	cwd "/opt/tomcat"
-	action :run
-	command "chown -R tomcat webapps/ work/ temp/ logs/"
 end
 
 template '/etc/systemd/system/tomcat.service' do
