@@ -5,7 +5,7 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 #
 
-package 'sudo apt-get install openjdk-8-jre'
+package 'openjdk-8-jre'
 
 group "tomcat" do
 	gid 2501
